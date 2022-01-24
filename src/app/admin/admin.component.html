@@ -1,0 +1,36 @@
+<section class="admin-panel">
+    <h2>Административная панель</h2>
+
+    <mat-tab-group mat-align-tabs="start" style="background: white;">
+        <mat-tab label="Посты">
+            <div class="posts">
+                <div class="post" *ngFor="let item of paginatorArray"
+                    style="background:no-repeat url('{{item.image}}');background-size:cover;">
+                    <span class="title-post">{{item.theme}}</span>
+                    <mat-icon mat-raised-button class="btn-edit" color="primary"
+                        routerLink="/admin/post/edit/{{item.id}}">edit</mat-icon>
+                    <mat-icon class="add-post" color="primary" routerLink="/admin/post/add/{{item.id}}">add </mat-icon>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <mat-paginator #paginator class="pag-posts" [length]="posts.length" [pageSize]="4" [pageSizeOptions]="[2, 4, 6, 10]"
+            aria-label="Select page" (page)="changedItemsPage($event)">
+             </mat-paginator>
+        </mat-tab>
+        <mat-tab label="Портфолио">
+            <div class="posts">
+                <div class="post" *ngFor="let item of projects"
+                    style="background:no-repeat url('');background-size:cover;">
+                    <span class="title-post"></span>
+                    <mat-icon mat-raised-button class="btn-edit" color="primary"
+                        routerLink="">edit</mat-icon>
+                    <mat-icon class="add-post" color="primary" routerLink="/admin/portfolio/add/{{item.id}}">add </mat-icon>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Third">Content 3</mat-tab>
+    </mat-tab-group>
+
+  
+
+</section>

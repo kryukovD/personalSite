@@ -1,0 +1,49 @@
+.admin-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 30px 30px;
+    background :#F0EFEB;
+    h2{
+        align-self: center;
+    }
+}
+.posts{
+    background: white;
+    display: grid;
+    grid-auto-rows: 200px;
+    padding: 10px 0px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    .post{
+        filter: brightness(94%);
+        filter: grayscale(0.4);
+        .title-post{
+            display: block;
+            font-family: Caveat;
+            font-size: 30px;
+            font-weight: 500;
+            padding: 0px 30px;
+           
+        }
+        .btn-edit{
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        .add-post{
+            position: absolute;
+            right:30px;
+            font-size: 30px;
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+}
+.pag-posts{
+    background: white;
+}

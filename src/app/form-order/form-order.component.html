@@ -1,0 +1,43 @@
+<div class="form-order">
+    <h2>Заявка</h2>
+    <div class="form-order__input">
+<mat-form-field appearance="fill" class="form-order__field" >
+    <mat-label>Имя</mat-label>
+    <input class="name-input" [formControl]="name" name="name" required matInput >
+    <div  *ngIf="name.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+    <div  *ngIf="name.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 20 </div>
+    <div  *ngIf="name.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Имя содержит цифры </div>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-order__field" name="family" >
+    <mat-label>Фамилия</mat-label>
+    <input matInput [formControl]="family" name="family" required>
+    <div  *ngIf="family.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+    <div  *ngIf="family.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 30 </div>
+    <div  *ngIf="family.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Фамилия содержит цифры </div>
+  </mat-form-field>
+  <div class="break"></div>
+  <mat-form-field appearance="fill" class="form-order__field" name="phone"> 
+    <mat-label>Телефон</mat-label>
+    <input matInput [formControl]="phone" required>
+    <div  *ngIf="phone.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+    <div  *ngIf="phone.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 11 </div>
+    <div  *ngIf="phone.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Телефон формата 79004628617 </div>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form-order__field">
+    <mat-label>Тип сайта</mat-label>
+    <mat-select (selectionChange)="selectionChange($event)">
+      <mat-option value="Лендинг">Лендинг</mat-option>
+      <mat-option value="Корпоративный">Корпоративный</mat-option>
+      <mat-option value="Визитка">Визитка</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+  <mat-form-field appearance="fill">
+    <mat-label>Комментарий</mat-label>
+    <textarea matInput [formControl]="message" name="message" required></textarea>
+    <div  *ngIf="message.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+  </mat-form-field>
+  <a class="btn" href="javascript:void(0)" (click)="sendForm()">Готово</a>
+  <p *ngIf="systemMessage"  class="{{systemMessage.messageClass}}">{{ systemMessage.message}}</p>
+</div>
+  

@@ -1,0 +1,128 @@
+
+h2{
+   flex-direction: row; 
+   justify-content: center;
+   text-align: center;
+}
+.portfolio-block{
+    text-align: center;
+    
+}
+.grey{
+   background: #F0EFEB;
+   padding-bottom: 30px;
+}
+.portfolio-block{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    background:#F0EFEB;
+  
+}
+.about{
+    display: flex;
+    width: 100%;
+    background: white;
+    padding-bottom: 30px;
+    .description{
+        display: flex;
+        .more_description{
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+        img{
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            opacity: 0.8;
+            object-fit: contain;
+            
+        }
+        .shot_desc{
+            text-align: left;
+            line-height: 30px;
+            padding: 0 20px;
+        }
+    }
+    .using_technology{
+        width: 100%;
+       
+    .title-tech{
+        padding: 0 20px;
+        text-align: left !important;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    .block-logo{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        canvas{
+            font-style: normal;
+            font-family: 'Caveat', cursive !important;
+        }
+
+    }
+}
+
+}
+
+.gallery-work{
+    flex-wrap: wrap;
+    padding: 0px 0px 40px ;
+    .portfolio-image{
+        width: 100%;
+        height: 250px;
+      }
+      .images-portfolio-block{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        width: 400px;
+        position: relative;
+        .wrap-image{
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        &:hover{
+            .ref-block{
+                display: flex;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                background: rgb(0, 0, 0,0.5);
+                color: white;
+                a{
+                    color: white;
+                    text-decoration: none;
+                    font-size: 18px;
+                }
+                
+            }
+          
+        }
+        .ref-block{
+            display: none;
+        }
+    }
+    
+}
+
+@media(max-width:1020px){
+    .description{
+        flex-wrap: wrap;
+        justify-content: center;
+        img{
+            width: 400px !important ;
+            object-fit: cover !important;
+            height: 400px !important;
+           
+            
+        }
+    }
+}
+

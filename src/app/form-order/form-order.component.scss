@@ -1,0 +1,48 @@
+.form-order{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  .btn{
+    display: flex;
+    text-decoration: none;
+    width:129px;
+    height: 36px;
+    background: #000000;
+    color: #FFFFFF;
+    border-radius: 100px;
+    border: 1px solid #000000;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 17px;
+    margin: auto;
+
+
+}
+  .form-order__input{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+     .form-order__field{
+        width: 45%;
+     }
+  }
+  
+
+   .tooltip{
+     color:red;
+     font-size: 13px;
+   }
+   .error{
+     color:red;
+     font-size: 13px;
+
+   }
+   .success{
+     color: green;
+     font-size: 13px;
+   }
+ 
+}
+

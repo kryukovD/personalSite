@@ -1,0 +1,46 @@
+<div class="portfolio-block">
+<div class="wrapper grey" style="height:auto">
+    <h2>Выполненные работы</h2>
+<div class="gallery-work"   >
+    <owl-carousel-o [options]="customOptions"  >
+    <ng-template carouselSlide *ngFor="let item of portfolio" >
+    <div  class="images-portfolio-block "     >
+         <p class="title_work">{{item.title}}</p>
+         <div class="wrap-image grid-sizer">
+            <div class="ref-block">
+                <a href={{item.src}}>Онлайн</a>
+            </div>
+        <img   [src]="item.path"  class="portfolio-image ">
+         </div>
+      </div>
+    </ng-template >
+
+    </owl-carousel-o>
+    
+</div>
+</div>
+ <div class="about">
+     <div class="wrapper">
+        <h2>Обо мне</h2>
+        <div class="description">
+            <img [defaultImage]="'assets/i.jpeg'" class="lazy" [lazyLoad]="'assets/i.jpeg'" class="i">
+            <div class="more_description">
+                <p class="shot_desc">Мне 24 года , люблю заниматься веб-программированием.В программирование уже 4 года и не собираюсь на этом останавливаться.
+                   Ответственный и трудолюбивый. Сделаю вам сайт качественно и надежно , а главное по совести.
+                </p>
+                <div class="using_technology">
+                    <h6 class="title-tech">Используемые технологии:  </h6>
+                    <div class="block-logo">
+                        <canvas #canvas width="200px" height="200px"></canvas>
+                        <canvas  #canvas width="200px" height="200px"></canvas>
+                        <canvas #canvas width="200px" height="200px"></canvas>
+                        <canvas  #canvas width="200px" height="200px"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+ </div>
+</div>
+

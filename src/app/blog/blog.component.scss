@@ -1,0 +1,79 @@
+.blog{
+    display: flex;
+    flex-direction: column;
+    background:#F0EFEB;
+    padding-top: 10px !important;
+
+    .post{
+        display: flex;
+        flex-direction: row;
+        padding: 20px 10px;
+        margin:10px 0px;
+        background: white;
+        clip-path: 
+        polygon(
+          0% 5%,     /* верхняя левая */
+          5% 0%,     /* верхняя левая */
+          100% 0%,    /* верхняя правая */
+          100% 5%,   /* верхняя правая */
+          100% 100%,  /* нижняя правая */
+          95% 100%,  /* нижняя правая */
+          5% 100%,   /* нижняя левая */
+          0 100%      /* нижняя левая */
+        );
+    }
+    .images-post{
+        display: flex;
+        width: 20%;
+        height: auto;
+        justify-content: space-between;
+        height: 200px;
+        img{
+            width: 100%;
+            object-fit: cover;
+            width: 100%;
+         
+        }
+       
+
+    }
+    .post-description{
+        display: flex;
+        width: 100%;
+        position: relative;
+        p{
+            padding: 20px;
+            width: 100%;
+        }
+        .next{
+          position: absolute;
+          left: 15px;
+          bottom: 10px;
+          text-decoration: none;
+          color:#3700B3;
+          
+
+        }
+        .icon-like{
+            font-weight: 100;
+            position: absolute;
+            bottom: 10px;
+            right:60px;
+            &:hover{
+                cursor: pointer;
+                color:red;
+            }
+        }
+        .icon-view{
+            position: absolute;
+            bottom: 10px;
+            right:30px;
+            &:hover{
+                cursor: pointer;
+                color:red;
+            }
+        }
+
+       }
+       
+}

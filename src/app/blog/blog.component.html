@@ -1,0 +1,25 @@
+<div class="blog">
+    <div class="wrapper ">
+        <div class="post" *ngFor="let item of paginatorArray">
+            <div class="images-post" >
+                <img src="{{item.image}}">
+
+            </div>
+            
+            <div class="post-description" >
+              <p class="short-desc">{{item.shortdesc}}</p>
+              <a routerLink="/blog/{{item.id}}" class="next"> Подробнее </a>
+              <mat-icon  class="icon-like"color="primary">favorite</mat-icon>
+              <mat-icon  class="icon-view"color="primary">visibility</mat-icon>
+            </div>
+            
+ 
+        </div>
+        <mat-paginator #paginator [length]="100"
+              [pageSize]="4"
+              [pageSizeOptions]="[1,2,3,4]"
+              aria-label="Select page" color="primary" [length]="lengthPosts" (page)="changedItemsPage($event)"  >
+        </mat-paginator>
+    </div>
+
+</div>

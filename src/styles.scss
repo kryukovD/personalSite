@@ -1,0 +1,120 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mySite-primary: mat.define-palette(mat.$indigo-palette);
+$mySite-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mySite-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$mySite-theme: mat.define-light-theme((
+  color: (
+    primary: $mySite-primary,
+    accent: $mySite-accent,
+    warn: $mySite-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($mySite-theme);
+
+/* You can add global styles to this file, and also import other style files */
+// @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+@font-face {
+  font-family:Caveat;
+  src: url(assets/fonts/Caveat-Regular.ttf) format("opentype");
+}
+
+
+body,html { height: 100%;width: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h1{
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 60px;
+}
+h2{
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 40px;
+  margin:0px !important;
+  padding: 30px 0px;
+}
+.wrapper{
+  width: 80%;
+  margin:auto;
+  height: auto;
+}
+.block{
+  padding: 10px 0px;
+}
+.break{
+  flex-basis: 100%;
+}
+.main-wrap{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.content{
+  flex:1 0 auto;
+}
+.wrap{
+  flex-wrap:wrap;
+}
+.customize+ * .mat-menu-panel {
+  margin-top:10px;
+}
+.mat-paginator-container{
+  justify-content: center !important;
+  font-size: 16px !important;
+}
+.lazy {
+  -webkit-transition: opacity 500ms ease-in-out;
+  -moz-transition: opacity 500ms ease-in-out;
+  -o-transition: opacity 500ms ease-in-out;
+   transition: opacity 500ms ease-in-out;
+   max-width: 100%;
+   opacity: 0 ;
+}
+.ng-lazyloaded{
+   opacity: 1 !important;
+             
+}
+.portfolio-image{
+
+  min-height: 250px;
+}
+.owl-item{
+  display: flex;
+  justify-content: center;
+}
+.owl-next, .owl-prev{
+  background:black !important;
+}
+
+@media (max-width:700px) {
+.wrapper{
+  width: 95% !important;
+}
+}
+           
+
+

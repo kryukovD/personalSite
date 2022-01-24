@@ -1,0 +1,25 @@
+.advantage{
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background: #F0EFEB;
+  
+}
+.advantage-items{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .card{
+        margin:10px;
+        flex-basis: 250px;
+       p{
+        font-size: 16px !important;
+        line-height: 20px;
+       } 
+    }
+    .adventage__image{
+       width: 90%;
+    }
+}
+
