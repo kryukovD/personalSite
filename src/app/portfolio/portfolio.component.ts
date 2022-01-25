@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import * as css from "css-font-loading-module"
 import { NgxMasonryComponent } from 'ngx-masonry';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { PortfolioService, Project } from '../portfolio.service';
 
 
 @Component({
@@ -15,10 +16,7 @@ export class PortfolioComponent implements OnInit {
   masonry!:NgxMasonryComponent
   @ViewChildren("canvas")
   canvasRef!:QueryList<ElementRef>
-  portfolio:Array<Portfolio>=[{title:"kareliagroup.com",path:"assets/jungle-site.jpg",src:"https://kareliagroup.com/"},
-  {title:"ptz.moizakazy.com",path:"assets/zakazy-site.jpg",src:"https://ptz.moizakazy.ru/"},
-  {title:"ptz.moizakazy.com",path:"assets/zakazy-site.jpg",src:"https://ptz.moizakazy.ru/"}
-]
+  portfolio?:Project[]
   customOptions:OwlOptions={
     mouseDrag: false,
     touchDrag: false,
@@ -43,10 +41,12 @@ export class PortfolioComponent implements OnInit {
     nav: true
   
   }
-  constructor(public route:Router) { }
+  constructor(public route:Router,private portfolioService:PortfolioService) { }
 
   ngOnInit(): void {
-    
+    this.portfolioService.getProjects().subscribe((data)=>{
+      this.portfolio=data
+    })
     
   }
   ngAfterViewInit(){
@@ -90,9 +90,5 @@ export class PortfolioComponent implements OnInit {
 
 
 }
-interface Portfolio{
-  title:string,
-  path:string
-  src:string
-}
+
 

@@ -17,6 +17,11 @@ export class AdminComponent implements OnInit {
   pageIndex:number=0
   @ViewChild('paginator',{static:true})
   paginator!:MatPaginator
+  paginatorArrayByProject?:any[]
+  pageSizeByProject!:number
+  pageIndexByProject:number=0
+  @ViewChild('paginatorByProject',{static:true})
+  paginatorByProject!:MatPaginator
   constructor(public auth:AuthService,public post:PostsService,private projectsService:PortfolioService) { }
 
   ngOnInit(): void {
@@ -27,9 +32,9 @@ export class AdminComponent implements OnInit {
     })
     this.projectsService.getProjects().subscribe((data)=>{ 
         this.projects=data
-        console.log(this.projects)
-  
+        this.changedItemsPageByProject()
     })
+    
  
   }
   changedItemsPage(event?:any|undefined){
@@ -41,6 +46,21 @@ export class AdminComponent implements OnInit {
         
       }
       else if(event.pageIndex<this.pageIndex){
+
+      }
+    }
+  
+    
+  }
+  changedItemsPageByProject(event?:any|undefined){
+    this.pageSizeByProject=this.paginatorByProject.pageSize
+    this.paginatorArrayByProject=this.projects!.slice(0,this.pageSizeByProject) 
+    if(event){
+      if(event.pageIndex>this.pageIndexByProject){
+        this.paginatorArrayByProject=this.projects!.slice(((event.pageIndex) * this.pageSizeByProject ), ((event.pageIndex+1)* this.pageSizeByProject))
+        
+      }
+      else if(event.pageIndex<this.pageIndexByProject){
 
       }
     }

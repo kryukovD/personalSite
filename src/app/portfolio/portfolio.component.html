@@ -2,7 +2,7 @@
 <div class="wrapper grey" style="height:auto">
     <h2>Выполненные работы</h2>
 <div class="gallery-work"   >
-    <owl-carousel-o [options]="customOptions"  >
+    <owl-carousel-o [options]="customOptions" *ngIf="portfolio" >
     <ng-template carouselSlide *ngFor="let item of portfolio" >
     <div  class="images-portfolio-block "     >
          <p class="title_work">{{item.title}}</p>
@@ -10,7 +10,7 @@
             <div class="ref-block">
                 <a href={{item.src}}>Онлайн</a>
             </div>
-        <img   [src]="item.path"  class="portfolio-image ">
+        <img   [src]="item.image"  class="portfolio-image ">
          </div>
       </div>
     </ng-template >

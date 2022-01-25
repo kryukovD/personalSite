@@ -34,16 +34,20 @@
                 cursor: pointer;
             }
         }
-        .add-post{
-            position: absolute;
-            right:30px;
-            font-size: 30px;
-            &:hover{
-                cursor: pointer;
-            }
-        }
+       
+      
     }
+    
 }
 .pag-posts{
     background: white;
+}
+.add-post{
+    position: absolute;
+    right:30px;
+    top:15px;
+    font-size: 30px;
+    &:hover{
+        cursor: pointer;
+    }
 }

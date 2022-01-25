@@ -1,21 +1,21 @@
 <section class="edit-post"  >
     <h3 class="title-page">{{dataPage.title}}</h3>
     <div class="nav-page">
-    <mat-icon class="back" color="primary" > keyboard_return</mat-icon>
-    <a *ngIf="dataPage.type=='edit'" mat-button color="warn" >Удалить</a>
+    <mat-icon class="back" color="primary" (click)="back()" > keyboard_return</mat-icon>
+    <a *ngIf="dataPage.type=='edit'" mat-button color="warn" (click)="deleteProject(article.id)">Удалить</a>
     </div>
     <div class="wrap-notice " *ngIf="notice" >
       <p class="{{notice.class=='success'?'success':'error'}}">{{notice.message}}</p>
     </div>
       <form [formGroup]="editForm" class="form"  (ngSubmit)="submit()"  >
-          <input   value="" type="hidden" formControlName="id" >
+          <input   value="{{article?.id}}" type="hidden" formControlName="id" >
           <mat-form-field  appearance="fill" >
             <mat-label>Заголовок </mat-label>
-            <input class="inp-theme" matInput  value="" type="text" formControlName="title">
+            <input class="inp-theme" matInput  value="{{article?.title}}" type="text" formControlName="title">
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Ссылка </mat-label>
-              <input class="inp-short-desc" matInput  value="" type="text" formControlName="src"> 
+              <input class="inp-short-desc" matInput  value="{{article?.src}}" type="text" formControlName="src"> 
             </mat-form-field>
            
         
@@ -24,11 +24,11 @@
         <div class="file"  >
             <div class="current-image" *ngIf="dataPage.type=='edit'">
               <span>Текущая картинка </span>
-              <img  *ngIf="article" src=""> 
+              <img  *ngIf="article.image" src="{{article?.image}}"> 
             </div>
             <div class="load-image">
               <input type="file" #file  formControlName="image"  (change)="showLoadedImage($event)" style="padding-left:10px;" >
-              <img  id="loaded-image" src="{{srcLoadedImage}}">
+              <img *ngIf="srcLoadedImage" id="loaded-image" src="{{srcLoadedImage}}">
               <div class="wrapper-btn">
                   <button mat-raised-button color="primary" class="ready" type="submit">Готово</button>
                 </div>

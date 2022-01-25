@@ -10,6 +10,7 @@ const ordersRouter=require('./routes/orders');
 const regRouter=require("./routes/reg");
 const authRouter=require("./routes/auth")
 const postsRouter=require("./routes/posts")
+const projectsRouter=require("./routes/projects")
 const adminRouter=require("./routes/admin")
 const session = require('express-session');
 const { send } = require('process');
@@ -52,6 +53,7 @@ app.use('/registration',regRouter)
 app.use('/auth',authRouter)
 app.use("/posts",postsRouter)
 app.use("/admin",adminRouter)
+app.use("/projects",projectsRouter)
 
 
 // catch 404 and forward to error handler

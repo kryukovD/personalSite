@@ -11,7 +11,7 @@ import { Config } from '../config';
 export class PortfolioService {
   constructor(private http: HttpClient) { }
   getProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(`${Config.url}/admin/projects/all`, Config.options)
+    return this.http.get<Project[]>(`${Config.url}/projects/all`, Config.options)
   }
   addProject(data:Project):Observable<any>{
     return this.http.post(`${Config.url}/admin/projects/add`,data,Config.options)
@@ -19,10 +19,20 @@ export class PortfolioService {
   updateProject(data:Project){
     return this.http.put(`${Config.url}/admin/projects/edit`,data,Config.options)
   }
+  getFullProjectById(id:string|null):Observable<Project>{
+    return this.http.get<Project>(`${Config.url}/admin/projects/select/${id}`,Config.options)
+  }
+  deleteProject(id:number):any{
+    return this.http.delete<Project>(`${Config.url}/admin/projects/delete/${id}`,Config.options)
+  }
 }
 export interface Project {
   id: number,
   title: string,
-  image: string,
+  image: Blob,
   src: string
+}
+export interface Notice{
+  message:string
+  class:string
 }

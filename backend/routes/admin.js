@@ -59,23 +59,8 @@ router.post("/post/delete",function(req,res,next){
         })
     })
 })
-router.get("/projects/all",function(req,res,next){
-    pool.getConnection(function(err,connection){
-        if(err){
-            throw err
-        }
-        connection.query("Select * from projects",function(err,results){
-            if(err){
-                 throw err 
-            }
-            else{
-                 res.send(results)
-            }
-        })
-        connection.release()
-    })
-})
-router.post("/projects/add/",function(req,res,next){
+
+router.post("/projects/add",function(req,res,next){
     console.log(req.body)
     const {id,title,src,image}=req.body
     pool.getConnection(function(err,connection,next){
@@ -84,7 +69,7 @@ router.post("/projects/add/",function(req,res,next){
         }
        connection.query("Insert into projects (title,src,image) values (?,?,?)",[title,src,image],function(err,result){
         if(err){
-           console.log(err)
+            return res.send({message:"Ошибка",class:"error"})
         }
         else if(result){
             connection.release()
@@ -105,6 +90,34 @@ router.put("/projects/edit",function(req,res,next){
                 throw err
             }
             res.send({message:"Запись изменена",class:"success"})
+            connection.release()
+        })
+       
+    })
+})
+router.get("/projects/select/:id",function(req,res,next){
+    const id=req.params['id']
+    pool.getConnection(function(err,connection){
+        connection.query("Select * from projects where id=?",[id],
+        function(err,result){
+            if(err){
+                throw err
+            }
+            res.send(result[0])
+            connection.release()
+        })
+       
+    })
+})
+router.delete("/projects/delete/:id",function(req,res,next){
+    const id=req.params['id']
+    pool.getConnection(function(err,connection){
+        connection.query("Delete  from projects where id=?",[id],
+        function(err,result){
+            if(err){
+                throw err
+            }
+            res.send({message:"Запись удалена",class:"success"})
             connection.release()
         })
        

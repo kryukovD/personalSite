@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PortfolioService } from '../portfolio.service';
+import { Notice, PortfolioService } from '../portfolio.service';
 
 
 @Component({
@@ -28,7 +28,14 @@ export class EditProjectComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.dataPage = data
-    })
+    },(err)=>this.notice={mesage:"Ошибка",class:"error"})
+    const id = this.route.snapshot.paramMap.get("id")
+    if (this.dataPage.type == "edit") {
+      this.portfolioSetvice.getFullProjectById(id).subscribe((data: any) => {
+        this.article = data
+        this.editForm.setValue({ id: data.id,image: "", title:data.title,src:data.src })
+      })
+    }
   }
   showLoadedImage(event: Event) {
     const target = event.target as HTMLInputElement
@@ -48,6 +55,9 @@ export class EditProjectComponent implements OnInit {
 
 
   }
+  back() {
+    this.loc.back()
+  }
   submit() {
     let checkError = false
     for (let key in this.editForm.controls) {
@@ -58,7 +68,7 @@ export class EditProjectComponent implements OnInit {
 
     }
     if (checkError == false) {
-      if (!this.srcLoadedImage) {
+      if (!this.srcLoadedImage && this.dataPage.type=="edit")  {
         this.srcLoadedImage = this.article.image
       }
       if (this.dataPage.type == "edit") {
@@ -77,6 +87,11 @@ export class EditProjectComponent implements OnInit {
       this.notice = { class: "error", message: "Ошибка" }
     }
 
+  }
+  deleteProject(id:number){
+    this.portfolioSetvice.deleteProject(id).subscribe((result:Notice)=>{
+      this.notice=result
+    })
   }
 
 }

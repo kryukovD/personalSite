@@ -20,9 +20,9 @@ const routes: Routes = [
   {path:"blog/:id",component:DetailArticleComponent},
   {path:"admin",component:AdminComponent ,canActivate:[AdminGuard]},
   {path:"admin/post/edit/:id",component:EditPostComponent ,canActivate:[AdminGuard],data:{type:"edit",title:"Изменить"}},
-  {path:"admin/post/add/:id",component:EditPostComponent,canActivate:[AdminGuard],data:{type:"add",title:"Добавить"}},
+  {path:"admin/post/add",component:EditPostComponent,canActivate:[AdminGuard],data:{type:"add",title:"Добавить"}},
   {path:"admin/portfolio/edit/:id",component:EditProjectComponent,canActivate:[AdminGuard],data:{type:"edit",title:"Изменить"}},
-  {path:"admin/portfolio/add/:id",component:EditProjectComponent,canActivate:[AdminGuard],data:{type:"add",title:"Добавить"}},
+  {path:"admin/portfolio/add",component:EditProjectComponent,canActivate:[AdminGuard],data:{type:"add",title:"Добавить"}},
   { path: '**', redirectTo: '/' }
 
 
