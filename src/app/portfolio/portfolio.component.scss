@@ -9,21 +9,20 @@ h2{
     
 }
 .grey{
-   background: #F0EFEB;
    padding-bottom: 30px;
 }
 .portfolio-block{
     display: flex;
     flex-direction: column;
     height: auto;
-    background:#F0EFEB;
+
   
 }
 .about{
     display: flex;
     width: 100%;
-    background: white;
     padding-bottom: 30px;
+    background: #F0EFEB;
     .description{
         display: flex;
         .more_description{
@@ -110,6 +109,9 @@ h2{
         }
     }
     
+}
+.wrap-banner{
+    background: #F0EFEB;
 }
 
 @media(max-width:1020px){

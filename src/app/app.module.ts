@@ -38,6 +38,7 @@ import {LazyLoadImageModule} from "ng-lazyload-image"
 import {CarouselModule} from "ngx-owl-carousel-o"
 import {MatDividerModule} from '@angular/material/divider';
 import { EditProjectComponent } from './edit-project/edit-project.component';
+import { BannerPortfolioComponent } from './banner-portfolio/banner-portfolio.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { EditProjectComponent } from './edit-project/edit-project.component';
     DetailArticleComponent,
     AdminComponent,
     EditPostComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    BannerPortfolioComponent
     
 
   

@@ -36,7 +36,8 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
             ],
             "scripts": [
-      
+              "src/assets/scripts/banner.js",
+              "src/assets/scripts/bannerAdobe.js"
             ]
           },
           "configurations": {
