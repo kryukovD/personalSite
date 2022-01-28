@@ -20,5 +20,23 @@ router.post('/', function(req, res, next) {
     return res.status(400).send({message:"Повторная отправка форма",messageClass:"error"})
   }
 });
+router.get("/all",(req,res,next)=>{
+  pool.getConnection((err,connection)=>{
+    if(err){
+      res.send({message:"Нет соединения",class:"error"})
+    }
+    else{
+      connection.query("Select * from orders",(err,result)=>{
+        if(err){
+          res.send({message:"Неверный запрос",class:"success"})
+        }
+        else{
+          res.send(result)
+        }
+        connection.release()
+      })
+    }
+  })
+})
 
 module.exports = router;

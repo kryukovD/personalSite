@@ -55,7 +55,7 @@ function handleComplete(evt,comp) {
 			stage.tickOnUpdate = true;		
 		}
 	}
-	makeResponsive(true,'width',true,1);
+	makeResponsive(true,'both',true,1);
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
 }

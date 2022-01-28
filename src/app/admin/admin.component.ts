@@ -2,7 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { AuthService } from '../auth.service';
 import { PostsService } from '../posts.service';
-import {Project,PortfolioService} from "../portfolio.service"
+import {Project,PortfolioService, Notice} from "../portfolio.service"
+import { Order,FormService } from '../form.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +13,8 @@ import {Project,PortfolioService} from "../portfolio.service"
 })
 export class AdminComponent implements OnInit {
   posts?:any
+  orders?:Order[]|Notice|any
+  headersTable=["id","name","family","phone","message","category"]
   projects?:Array<Project>
   paginatorArray?:any[]
   pageSize!:number
@@ -22,7 +26,7 @@ export class AdminComponent implements OnInit {
   pageIndexByProject:number=0
   @ViewChild('paginatorByProject',{static:true})
   paginatorByProject!:MatPaginator
-  constructor(public auth:AuthService,public post:PostsService,private projectsService:PortfolioService) { }
+  constructor(public auth:AuthService,public post:PostsService,private projectsService:PortfolioService,private formService :FormService) { }
 
   ngOnInit(): void {
    
@@ -33,6 +37,10 @@ export class AdminComponent implements OnInit {
     this.projectsService.getProjects().subscribe((data)=>{ 
         this.projects=data
         this.changedItemsPageByProject()
+    })
+    this.formService.getOrders().subscribe((data)=>{
+      this.orders=data
+      console.log(this.orders)
     })
     
  

@@ -39,6 +39,7 @@ import {CarouselModule} from "ngx-owl-carousel-o"
 import {MatDividerModule} from '@angular/material/divider';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { BannerPortfolioComponent } from './banner-portfolio/banner-portfolio.component';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { BannerPortfolioComponent } from './banner-portfolio/banner-portfolio.co
     MatButtonModule,
     LazyLoadImageModule,
     CarouselModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule
     
     
     
