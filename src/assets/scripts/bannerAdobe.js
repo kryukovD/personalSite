@@ -116,7 +116,7 @@ p.nominalBounds = new cjs.Rectangle(-512.1,-330.1,917.4,568.3);
 	
 
 	// Текст2
-	this.text_1 = new cjs.Text("#Мои работы", "60px 'Caveat'", "#006699");
+	this.text_1 = new cjs.Text("#Мои работы", "60px 'Caveat'", "#3f51b5");
 	this.text_1.lineHeight = 79;
 	this.text_1.lineWidth = 503;
 	this.text_1.parent = this;

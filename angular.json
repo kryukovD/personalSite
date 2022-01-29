@@ -37,7 +37,9 @@
             ],
             "scripts": [
               "src/assets/scripts/banner.js",
-              "src/assets/scripts/bannerAdobe.js"
+              "src/assets/scripts/bannerAdobe.js",
+              "src/assets/scripts/bannerContacts.js",
+              "src/assets/scripts/bannerContactsAdobe.js"
             ]
           },
           "configurations": {
