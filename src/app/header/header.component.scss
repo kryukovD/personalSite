@@ -25,6 +25,7 @@
         font-size: 17px;
         font-family:Roboto, "Helvetica Neue", sans-serif   !important;
         font-weight: normal;
+        margin: auto;
    
     }
    
@@ -68,6 +69,7 @@
     z-index: 1000;
     display: flex;
     position:absolute;
+    left: 0px;
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 15px;
@@ -76,13 +78,14 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    width: 250px;
     height: 300px;
     background:#FFFFFF;
     border: 2px solid #3700B3;;
     border-radius: 20px;
     margin-top: 30px;
-    transform: translateX(-60px);
+    transform: translateX(-50%);
+    margin-left: 50%;
+    width: 230px;
     .wrapper__btn-login{
         display: flex;
         margin-top: 10px;
@@ -101,8 +104,9 @@
     }
 }
 .header__contacts{
-    position: relative;
+    position: relative ;
     justify-content: center;
+    flex-basis: 200px;
 }
 .drop-menu{
     font-family:Roboto, "Helvetica Neue", sans-serif   !important;
@@ -182,7 +186,7 @@
           text-align: center;
           align-self: center;
           position: absolute;
-          width: 200px;
+          width: 100%;
           top:50px;
           left: 50%;
           height: 250px;
@@ -274,5 +278,15 @@
         margin-top: 30px;
     }
   
+  }
+  @media (max-width:700px){
+      .login{
+        
+          
+      }
+      .header__contacts{
+          position: static !important;
+          
+      }
   }
 
