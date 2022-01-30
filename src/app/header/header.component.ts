@@ -4,6 +4,7 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn,
 import { RegService } from '../registration.service';
 import { ThemePalette } from '@angular/material/core'
 import { AuthService } from '../auth.service';
+import {MatMenuTrigger} from '@angular/material/menu';
 
 
 
@@ -20,6 +21,7 @@ import { AuthService } from '../auth.service';
 })
 
 export class HeaderComponent implements OnInit {
+  @ViewChild(MatMenuTrigger) trigger?: MatMenuTrigger;
   @ViewChild("btn",{static:true}) radioBtn:any
   color: ThemePalette = "primary";
   login?:string
@@ -42,6 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+     
     this.auth.auth().subscribe((data:any)=>{
       this.login=data.login
     
@@ -54,6 +57,14 @@ export class HeaderComponent implements OnInit {
     }
     )
   } 
+  ngAfterViewInit(){
+    window.matchMedia('(min-width:961px)').addListener((e)=>{
+      if(e.matches){
+        this.trigger!.closeMenu()
+      }
+    })
+  }
+ 
   
   open(event:Event){
     event.stopPropagation()
@@ -137,3 +148,5 @@ export function checkPassword(form:FormGroup):ValidatorFn{
       }
     }
 }
+
+

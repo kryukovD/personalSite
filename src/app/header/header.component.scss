@@ -255,6 +255,7 @@
       color: white;
   }
   
+  
   /* media */
   @media (max-width:961px) {
     .header__list{
@@ -263,6 +264,8 @@
     .mobile-menu{
         display: unset !important;
     }
+   
+   
     .menu{
         color: black;
         
