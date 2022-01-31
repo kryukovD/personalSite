@@ -33,7 +33,7 @@ router.post("/login",function(req,res,next){
                if(resultCheckPass){
                const token=jwt.sign({login:result[0].login,isAdmin:result[0].isAdmin},"kryukov")
                res.cookie("token",token,{maxAge:3600000})
-               return res.send({login:result[0].login})
+               return res.send(result[0])
                }
                else{
                 return res.send({message:"*Неверные данные"}).status(200)

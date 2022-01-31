@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild("btn",{static:true}) radioBtn:any
   color: ThemePalette = "primary";
   login?:string
+  isAdmin:boolean=false
   openLogin :Boolean=false
   dropMenu:Boolean=false
   profile:Boolean=false
@@ -47,6 +48,7 @@ export class HeaderComponent implements OnInit {
      
     this.auth.auth().subscribe((data:any)=>{
       this.login=data.login
+      this.isAdmin=data.isAdmin
     
     })
     this.regForm.controls.confirm.addValidators(checkPassword(this.regForm))
@@ -126,6 +128,7 @@ export class HeaderComponent implements OnInit {
         this.login=data.login
         this.openLogin=false
         this.profile=false
+        this.isAdmin=data.isAdmin
       }
       
     },

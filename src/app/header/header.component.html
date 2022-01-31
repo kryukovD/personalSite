@@ -29,6 +29,7 @@
       <li class="header__list__item" routerLinkActive="activeLink"  routerLink="/portfolio"> <a href="javascript:void(0)">Портфолио </a></li>
       <li class="header__list__item" routerLinkActive="activeLink"  routerLink="/blog" style="padding: 0 30px;"><a href="javascript:void(0)">Блог </a></li>
       <li class="header__list__item" routerLinkActive="activeLink"  routerLink="/contacts"><a href="javascript:void(0)">Контакты </a></li>
+      
   </ul>
   <div class="header__logo">
     <span>Kryukov_Studio</span>
@@ -45,6 +46,7 @@
           <li> <mat-icon class="profile_icon_list">shop</mat-icon>Заказы</li>
           <li><mat-icon class="profile_icon_list">chat</mat-icon>Чат</li>
           <li><mat-icon class="profile_icon_list">help</mat-icon>Поддержка</li>
+          <li  *ngIf="isAdmin"routerLink="/admin"><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</li>
         </ul>
         <a class="logout" href="javascript:void(0)" (click)="logout()">Выйти <mat-icon>logout</mat-icon></a>
     </div>
