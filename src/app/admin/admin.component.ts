@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { PostsService } from '../posts.service';
 import {Project,PortfolioService, Notice} from "../portfolio.service"
 import { Order,FormService } from '../form.service';
+const randomize=require('randomatic')
 
 
 @Component({
@@ -14,7 +15,7 @@ import { Order,FormService } from '../form.service';
 export class AdminComponent implements OnInit {
   posts?:any
   orders?:Order[]|Notice|any
-  headersTable=["id","name","family","phone","message","category"]
+  headersTable=["id","name","family","phone","message","category","active","apply"]
   projects?:Array<Project>
   paginatorArray?:any[]
   pageSize!:number
@@ -40,7 +41,6 @@ export class AdminComponent implements OnInit {
     })
     this.formService.getOrders().subscribe((data)=>{
       this.orders=data
-      console.log(this.orders)
     })
     
  
@@ -74,6 +74,14 @@ export class AdminComponent implements OnInit {
     }
   
     
+  }
+  saveStatusOrder(event:any){
+    const id=event.currentTarget.value
+    const input=document.querySelector(`.input__active${id}`) as HTMLInputElement
+    if(input.checked){
+      let key=randomize("A","5")
+      console.log(key)
+    }
   }
 
 }

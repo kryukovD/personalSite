@@ -129,6 +129,7 @@ export class HeaderComponent implements OnInit {
         this.openLogin=false
         this.profile=false
         this.isAdmin=data.isAdmin
+        this.messagesLogin=undefined
       }
       
     },

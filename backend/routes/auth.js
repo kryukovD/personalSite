@@ -26,6 +26,7 @@ router.get("/logout",function(req,res,next){
 router.post("/login",function(req,res,next){
     pool.getConnection(function(err,connection){
         if(err) throw err;
+        else{
         pool.query("Select  * from `users` where login=?",[req.body.login],function(err,result){
             if (err) throw err;
             if(result.length>0){
@@ -42,8 +43,12 @@ router.post("/login",function(req,res,next){
             else{
                 return res.send({message:"*Неверные данные"}).status(200)
             }
+            
         })
+    }
+       connection.release()
     })
+
 })
 
 

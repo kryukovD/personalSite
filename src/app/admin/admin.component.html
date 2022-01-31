@@ -73,6 +73,15 @@
                     <th mat-header-cell *matHeaderCellDef> Категория </th>
                     <td mat-cell *matCellDef="let element"> {{element.category}} </td>
                   </ng-container>
+
+                  <ng-container matColumnDef="active">
+                    <th mat-header-cell *matHeaderCellDef> Активный </th>
+                    <td mat-cell *matCellDef="let element"> <input type="checkbox" class="{{'input__active'+element.id}}" [attr.checked]="element.active?'checked':null" >  </td>
+                  </ng-container>
+                  <ng-container matColumnDef="apply">
+                    <th mat-header-cell *matHeaderCellDef> Применить</th>
+                    <td mat-cell *matCellDef="let element"> <button class="btn-apply" (click)="saveStatusOrder($event)" mat-raised-button value="{{element.id}}"><mat-icon color="primary" class="mat-save">save</mat-icon> </button> </td>
+                  </ng-container>
               
                 <tr mat-header-row *matHeaderRowDef="headersTable"></tr>
                 <tr mat-row style="height: 100px;" *matRowDef="let data;columns:headersTable"></tr>

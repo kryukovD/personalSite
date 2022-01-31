@@ -1,0 +1,20 @@
+.cab-orders{
+    .icon-shop{
+        vertical-align: middle;
+    }
+    .cab-orders__activate{
+        display: flex;
+        align-items: center;
+        .cab-orders__instruction{
+        
+            line-height: 25px;
+        }
+        .cab-orders__button{
+            flex-basis: 300px;
+            text-align: center;
+           
+        }
+        
+    }
+    
+}

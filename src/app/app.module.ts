@@ -40,6 +40,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { BannerPortfolioComponent } from './banner-portfolio/banner-portfolio.component';
 import {MatTableModule} from '@angular/material/table';
+import { ProfileComponent } from './profile/profile.component';
+import { CabOrdersComponent } from './cab-orders/cab-orders.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import {MatTableModule} from '@angular/material/table';
     AdminComponent,
     EditPostComponent,
     EditProjectComponent,
-    BannerPortfolioComponent
+    BannerPortfolioComponent,
+    ProfileComponent,
+    CabOrdersComponent
     
 
   

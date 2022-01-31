@@ -109,7 +109,11 @@ h2{
 .owl-next, .owl-prev{
   background:black !important;
 }
-
+h3{
+  font-family: Caveat;
+  font-size: 35px;
+  padding-left: 25px;
+}
 @media (max-width:700px) {
 .wrapper{
   width: 95% !important;

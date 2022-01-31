@@ -43,7 +43,7 @@
     <div class="drop-profile" *ngIf="profile" (click)="handleClick($event)" >
       <span>Профиль</span>
         <ul class="profileList">
-          <li> <mat-icon class="profile_icon_list">shop</mat-icon>Заказы</li>
+          <li routerLink="/profile/orders"> <mat-icon class="profile_icon_list" >shop</mat-icon>Заказы</li>
           <li><mat-icon class="profile_icon_list">chat</mat-icon>Чат</li>
           <li><mat-icon class="profile_icon_list">help</mat-icon>Поддержка</li>
           <li  *ngIf="isAdmin"routerLink="/admin"><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</li>

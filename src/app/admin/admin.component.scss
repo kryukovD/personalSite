@@ -60,3 +60,9 @@
     width: 200px !important;
     overflow: hidden;
   }
+  .mat-save:hover{
+    cursor: pointer;
+}
+.btn-apply{
+    z-index: 1000  !important;
+}
