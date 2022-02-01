@@ -1,20 +1,54 @@
 <div class="cab-orders">
     <h3 class="cab-orders-title">Заказы <mat-icon class="icon-shop" color="primary">shop </mat-icon></h3>
+    <p *ngIf="notice" class="{{notice.class}}">{{notice.message}}</p>
     <mat-divider></mat-divider>
     <div class="cab-orders__activate">
         <mat-form-field class="example-form-field" appearance="standard">
             <mat-label>Ключ</mat-label>
-            <input matInput type="text" >
+            <input matInput type="text"  [formControl]="key">
             <button  matSuffix mat-icon-button >
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
           <div class="cab-orders__button">
-            <button mat-raised-button color="primary">Активировать</button>
+            <button mat-raised-button color="primary" (click)="activateOrder()">Активировать</button>
           </div>
           <p class="cab-orders__instruction">
               Введите ключ заказа , который был вам отправлен на электронную почту , чтобы активировать заказ и отслеживать его выполнение.
           </p>
           
+    </div>
+    <div class="cab-odders__activatedOrder">
+      <h3>Активные <mat-icon color="primary" class="icon-shop">toggle_on</mat-icon></h3>
+          <ng-template [ngIf]="activeOrders" [ngIfElse]="tableOrder">
+            <table mat-table [dataSource]="activeOrders" class="table-orders" >
+           
+              <ng-container matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef> Статус </th>
+                <td mat-cell *matCellDef="let element"> {{element.active?'Активен':'Неактивен'}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="category">
+                <th mat-header-cell *matHeaderCellDef> Категория </th>
+                <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Имя </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="family">
+                <th mat-header-cell *matHeaderCellDef> Фамилия </th>
+                <td mat-cell *matCellDef="let element"> {{element.family}} </td>
+              </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </ng-template>
+          <ng-template #tableOrder>
+            <p>Нет активных заказов</p>
+          </ng-template>
     </div>
 </div>

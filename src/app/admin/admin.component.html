@@ -33,8 +33,8 @@
              </mat-paginator>
         </mat-tab>
         <mat-tab label="Заявки">
+          <p *ngIf="notice" style="padding-left: 30px;"class="{{notice.class}}">{{notice.message}}</p>
             <table mat-table [dataSource]="orders" class="mat-elevation-z8" >
-
                 <!--- Note that these columns can be defined in any order.
                       The actual rendered columns are set as a property on the row definition" -->
               

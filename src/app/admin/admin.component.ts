@@ -25,6 +25,7 @@ export class AdminComponent implements OnInit {
   paginatorArrayByProject?:any[]
   pageSizeByProject!:number
   pageIndexByProject:number=0
+  notice?:Notice
   @ViewChild('paginatorByProject',{static:true})
   paginatorByProject!:MatPaginator
   constructor(public auth:AuthService,public post:PostsService,private projectsService:PortfolioService,private formService :FormService) { }
@@ -80,7 +81,14 @@ export class AdminComponent implements OnInit {
     const input=document.querySelector(`.input__active${id}`) as HTMLInputElement
     if(input.checked){
       let key=randomize("A","5")
-      console.log(key)
+      this.formService.insertKeyOrder(id,1,key).subscribe((data:Notice)=>{
+        this.notice=data
+      })
+    }
+    else{
+      this.formService.insertKeyOrder(id,0).subscribe((data:Notice)=>{
+        this.notice=data
+      })
     }
   }
 

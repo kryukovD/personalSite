@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Notice, Order } from '../form.service';
+import {AuthService} from "../auth.service"
+import { FormControl } from '@angular/forms';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-cab-orders',
@@ -6,10 +10,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cab-orders.component.scss']
 })
 export class CabOrdersComponent implements OnInit {
-
-  constructor() { }
+  user?:any
+  activeOrders?:any
+  notice?:Notice
+  key=new FormControl()
+  displayedColumns=["active","category","family","name"]
+  constructor(private auth:AuthService,private form:FormService,private changeDetectorRef:ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.auth.auth().subscribe((data:any)=>{
+      this.user=data
+      this.form.getActiveOrders(this.user.id).subscribe((data:any)=>{
+        if(data.length>0){
+        this.activeOrders=data
+        }
+      })
+  })
+    
+}
+  activateOrder(){
+     this.form.getOrderByKey(this.user.id,this.key.value).subscribe((data:any)=>{
+        this.notice=data
+        this.ngOnInit()
+     })
   }
 
+
 }
+  
+

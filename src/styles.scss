@@ -114,11 +114,21 @@ h3{
   font-size: 35px;
   padding-left: 25px;
 }
+.error{
+  color:red;
+  font-size: 13px;
+
+}
+.success{
+  color: green;
+  font-size: 13px;
+}
 @media (max-width:700px) {
 .wrapper{
   width: 95% !important;
 }
 }
+
 
            
 
