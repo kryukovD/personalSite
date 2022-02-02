@@ -3,6 +3,7 @@ import { Notice, Order } from '../form.service';
 import {AuthService} from "../auth.service"
 import { FormControl } from '@angular/forms';
 import { FormService } from '../form.service';
+import { map,mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cab-orders',
@@ -29,10 +30,14 @@ export class CabOrdersComponent implements OnInit {
     
 }
   activateOrder(){
-     this.form.getOrderByKey(this.user.id,this.key.value).subscribe((data:any)=>{
+     this.form.getOrderByKey(this.user.id,this.key.value).pipe(
+       mergeMap((data:any)=>{
         this.notice=data
-        this.ngOnInit()
-     })
+        return this.form.getActiveOrders(this.user.id)
+     })).subscribe((data)=>this.activeOrders=data)
+  }
+  clear(){
+    this.key.setValue("")
   }
 
 

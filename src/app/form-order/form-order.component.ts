@@ -32,6 +32,12 @@ export class FormOrderComponent implements OnInit {
   message=new FormControl(null,[
     Validators.required
   ])
+  email=new FormControl(null,[
+    Validators.required,
+    Validators.email
+  ])
+  
+  
   public systemMessage?:any
   constructor(private http:HttpClient,private formService:FormService, private dialog:MatDialog) { }
 
@@ -40,7 +46,7 @@ export class FormOrderComponent implements OnInit {
   }
   sendForm():void{
    if (!(this.name.errors && this.family.errors && this.message.errors && this.phone.errors)){
-    this.formService.sendForm({name:this.name.value,family:this.family.value,phone:this.phone.value,category:this.category,message:this.message.value}).subscribe(
+    this.formService.sendForm({name:this.name.value,family:this.family.value,phone:this.phone.value,category:this.category,message:this.message.value,email:this.email.value}).subscribe(
       (data:any)=>{
         this.systemMessage=data
         setTimeout(()=>this.dialog.closeAll(),1500)

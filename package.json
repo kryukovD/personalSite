@@ -29,6 +29,7 @@
     "ngx-isotope": "^0.1.7",
     "ngx-masonry": "^13.0.0",
     "ngx-owl-carousel-o": "^7.0.1",
+    "nodemailer": "^6.7.2",
     "randomatic": "^3.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

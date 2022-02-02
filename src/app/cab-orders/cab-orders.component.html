@@ -6,7 +6,7 @@
         <mat-form-field class="example-form-field" appearance="standard">
             <mat-label>Ключ</mat-label>
             <input matInput type="text"  [formControl]="key">
-            <button  matSuffix mat-icon-button >
+            <button  matSuffix mat-icon-button (click)=clear()>
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>

@@ -11,7 +11,8 @@ export class AppComponent implements OnInit {
   }
   title = 'Krukov_Studio';
   ngOnInit(): void {
- 
+    
+    console.log(process.env)
   }
 
  

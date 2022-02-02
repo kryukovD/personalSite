@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { PostsService } from '../posts.service';
 import {Project,PortfolioService, Notice} from "../portfolio.service"
 import { Order,FormService } from '../form.service';
+import { mergeMap } from 'rxjs/operators';
 const randomize=require('randomatic')
 
 
@@ -79,16 +80,19 @@ export class AdminComponent implements OnInit {
   saveStatusOrder(event:any){
     const id=event.currentTarget.value
     const input=document.querySelector(`.input__active${id}`) as HTMLInputElement
+    let order=this.orders.find((item:any)=>item.id==id)
     if(input.checked){
       let key=randomize("A","5")
-      this.formService.insertKeyOrder(id,1,key).subscribe((data:Notice)=>{
+      this.formService.insertKeyOrder(id,1,key,order.email).pipe(mergeMap((data:Notice)=>{
         this.notice=data
-      })
+        return this.formService.getOrders()
+      })).subscribe((data)=>this.orders=data)
     }
     else{
-      this.formService.insertKeyOrder(id,0).subscribe((data:Notice)=>{
+      this.formService.insertKeyOrder(id,0).pipe(mergeMap((data:Notice)=>{
         this.notice=data
-      })
+        return this.formService.getOrders()
+      })).subscribe(data=>this.orders=data)
     }
   }
 

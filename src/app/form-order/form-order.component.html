@@ -23,7 +23,16 @@
     <div  *ngIf="phone.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 11 </div>
     <div  *ngIf="phone.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Телефон формата 79004628617 </div>
   </mat-form-field>
-  <mat-form-field appearance="fill" class="form-order__field">
+
+  <mat-form-field appearance="fill" class="form-order__field" name="email"> 
+    <mat-label>Email</mat-label>
+    <input matInput [formControl]="email" required>
+    <div  *ngIf="email.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+    <div  *ngIf="email.errors?.['email'] && name.touched" [ngClass]="'tooltip'">  *Некорректный email </div>
+  
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="form-order__field" >
     <mat-label>Тип сайта</mat-label>
     <mat-select (selectionChange)="selectionChange($event)">
       <mat-option value="Лендинг">Лендинг</mat-option>
