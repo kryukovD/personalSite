@@ -3,7 +3,7 @@
     <p *ngIf="notice" class="{{notice.class}}">{{notice.message}}</p>
     <mat-divider></mat-divider>
     <div class="cab-orders__activate">
-        <mat-form-field class="example-form-field" appearance="standard">
+        <mat-form-field class="cab-orders__formKey" appearance="standard">
             <mat-label>Ключ</mat-label>
             <input matInput type="text"  [formControl]="key">
             <button  matSuffix mat-icon-button (click)=clear()>

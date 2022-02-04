@@ -1,38 +1,38 @@
 <div class="form-order">
     <h2>Заявка</h2>
     <div class="form-order__input">
-<mat-form-field appearance="fill" class="form-order__field" >
+<mat-form-field style="padding-bottom:10px" appearance="fill" class="form-order__field" >
     <mat-label>Имя</mat-label>
     <input class="name-input" [formControl]="name" name="name" required matInput >
-    <div  *ngIf="name.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
-    <div  *ngIf="name.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 20 </div>
-    <div  *ngIf="name.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Имя содержит цифры </div>
+    <mat-error *ngIf="name.errors?.['required'] && name.touched" >  *Пустое поле </mat-error>
+    <mat-error *ngIf="name.errors?.['maxlength'] && name.touched" >  *Кол-во символов превышает 20 </mat-error>
+    <mat-error *ngIf="name.errors?.['pattern'] && name.touched" >  *Имя содержит цифры </mat-error>
   </mat-form-field>
-  <mat-form-field appearance="fill" class="form-order__field" name="family" >
+  <mat-form-field style="padding-bottom:10px" appearance="fill" class="form-order__field" name="family" >
     <mat-label>Фамилия</mat-label>
     <input matInput [formControl]="family" name="family" required>
-    <div  *ngIf="family.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
-    <div  *ngIf="family.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 30 </div>
-    <div  *ngIf="family.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Фамилия содержит цифры </div>
+    <mat-error *ngIf="family.errors?.['required'] && name.touched" >  *Пустое поле </mat-error>
+    <mat-error *ngIf="family.errors?.['maxlength'] && name.touched" >  *Кол-во символов превышает 30 </mat-error>
+    <mat-error *ngIf="family.errors?.['pattern'] && name.touched" >  *Фамилия содержит цифры </mat-error>
   </mat-form-field>
   <div class="break"></div>
-  <mat-form-field appearance="fill" class="form-order__field" name="phone"> 
+  <mat-form-field style="padding-bottom:10px" appearance="fill" class="form-order__field" name="phone"> 
     <mat-label>Телефон</mat-label>
     <input matInput [formControl]="phone" required>
-    <div  *ngIf="phone.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
-    <div  *ngIf="phone.errors?.['maxlength'] && name.touched" [ngClass]="'tooltip'">  *Кол-во символов превышает 11 </div>
-    <div  *ngIf="phone.errors?.['pattern'] && name.touched" [ngClass]="'tooltip'">  *Телефон формата 79004628617 </div>
+    <mat-error *ngIf="phone.errors?.['required'] && name.touched" >  *Пустое поле </mat-error>
+    <mat-error *ngIf="phone.errors?.['maxlength'] && name.touched" >  *Кол-во символов превышает 11 </mat-error>
+    <mat-error *ngIf="phone.errors?.['pattern'] && name.touched" >  *Телефон формата 79004628617 </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-order__field" name="email"> 
+  <mat-form-field style="padding-bottom:10px" appearance="fill" class="form-order__field" name="email"> 
     <mat-label>Email</mat-label>
     <input matInput [formControl]="email" required>
-    <div  *ngIf="email.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
-    <div  *ngIf="email.errors?.['email'] && name.touched" [ngClass]="'tooltip'">  *Некорректный email </div>
+    <mat-error  *ngIf="email.errors?.['required'] && name.touched" >  *Пустое поле </mat-error>
+    <mat-error  *ngIf="email.errors?.['email'] && name.touched" >  *Некорректный email </mat-error>
   
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="form-order__field" >
+  <mat-form-field style="padding-bottom:10px" appearance="fill" class="form-order__field" >
     <mat-label>Тип сайта</mat-label>
     <mat-select (selectionChange)="selectionChange($event)">
       <mat-option value="Лендинг">Лендинг</mat-option>
@@ -41,12 +41,14 @@
     </mat-select>
   </mat-form-field>
 </div>
-  <mat-form-field appearance="fill">
+  <mat-form-field style="padding-bottom:10px" appearance="fill">
     <mat-label>Комментарий</mat-label>
     <textarea matInput [formControl]="message" name="message" required></textarea>
-    <div  *ngIf="message.errors?.['required'] && name.touched" [ngClass]="'tooltip'">  *Пустое поле </div>
+    <mat-error  *ngIf="message.errors?.['required'] && name.touched" >  *Пустое поле </mat-error>
   </mat-form-field>
+  <div class="ready">
   <a class="btn" href="javascript:void(0)" (click)="sendForm()">Готово</a>
   <p *ngIf="systemMessage"  class="{{systemMessage.messageClass}}">{{ systemMessage.message}}</p>
+</div>
 </div>
   

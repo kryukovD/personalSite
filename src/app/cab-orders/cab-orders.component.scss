@@ -7,6 +7,11 @@
     .cab-orders__activate{
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .cab-orders__formKey{
+            
+        }
         .cab-orders__instruction{
         
             line-height: 25px;
@@ -22,4 +27,13 @@
         width: 100%;
     }
     
+}
+@media(max-width:574px){
+    .cab-orders__formKey{
+          flex-grow: 1;  
+    }
+    .cab-orders__button{
+        flex-grow: 1;
+       
+    }
 }

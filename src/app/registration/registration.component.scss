@@ -1,0 +1,24 @@
+.drop-menu{
+  display: flex; 
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  .drop-menu__input{
+      width: 300px;
+      padding: 5px 0px;
+  }
+  .close{
+      position: absolute;
+      top:30x;
+      right: 30px;
+      &:hover{
+          cursor: pointer;
+          color:#560319 !important;
+      }
+  }
+}
+.tooltip{
+    color:red;
+    font-size: 13px;
+  }

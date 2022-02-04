@@ -14,7 +14,7 @@ router.post("/",function(req,res,next){
                     }
                     if(result){
                         res.cookie("token",getJwt(req.body.login),{maxAge:3600000})
-                        return res.send({message:"Записано"}).status(200)
+                        return res.send({message:"Вы зарегистрированы" ,type:"success"}).status(200)
                     }
                 })
                 connection.release()

@@ -12,6 +12,7 @@ const authRouter=require("./routes/auth")
 const postsRouter=require("./routes/posts")
 const projectsRouter=require("./routes/projects")
 const adminRouter=require("./routes/admin")
+const chatRouter=require("./routes/chat").router
 const session = require('express-session');
 const { send } = require('process');
 var app = express();
@@ -54,6 +55,7 @@ app.use('/auth',authRouter)
 app.use("/posts",postsRouter)
 app.use("/admin",adminRouter)
 app.use("/projects",projectsRouter)
+app.use("/chat",chatRouter)
 
 
 // catch 404 and forward to error handler

@@ -42,7 +42,10 @@ import { BannerPortfolioComponent } from './banner-portfolio/banner-portfolio.co
 import {MatTableModule} from '@angular/material/table';
 import { ProfileComponent } from './profile/profile.component';
 import { CabOrdersComponent } from './cab-orders/cab-orders.component';
-
+import { RegistrationComponent } from './registration/registration.component';
+import { ChatComponent } from './chat/chat.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -63,7 +66,9 @@ import { CabOrdersComponent } from './cab-orders/cab-orders.component';
     EditProjectComponent,
     BannerPortfolioComponent,
     ProfileComponent,
-    CabOrdersComponent
+    CabOrdersComponent,
+    RegistrationComponent,
+    ChatComponent
     
 
   
@@ -92,7 +97,8 @@ import { CabOrdersComponent } from './cab-orders/cab-orders.component';
     LazyLoadImageModule,
     CarouselModule,
     MatDividerModule,
-    MatTableModule
+    MatTableModule,
+    SocketIoModule.forRoot(config)
     
     
     

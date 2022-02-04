@@ -10,17 +10,7 @@
         padding: 20px 10px;
         margin:10px 0px;
         background: white;
-        clip-path: 
-        polygon(
-          0% 5%,     /* верхняя левая */
-          5% 0%,     /* верхняя левая */
-          100% 0%,    /* верхняя правая */
-          100% 5%,   /* верхняя правая */
-          100% 100%,  /* нижняя правая */
-          95% 100%,  /* нижняя правая */
-          5% 100%,   /* нижняя левая */
-          0 100%      /* нижняя левая */
-        );
+        
     }
     .images-post{
         display: flex;
@@ -61,7 +51,7 @@
             right:60px;
             &:hover{
                 cursor: pointer;
-                color:red;
+                color:#560319;
             }
         }
         .icon-view{
@@ -70,7 +60,7 @@
             right:30px;
             &:hover{
                 cursor: pointer;
-                color:red;
+                color:#560319;
             }
         }
 

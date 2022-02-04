@@ -1,0 +1,34 @@
+<div class="drop-menu" [class.active]="dropMenu" (click)="handleClick($event)" [formGroup]="regForm">
+    <h2>Регистрация</h2>
+    <mat-icon class="close" mat-dialog-close>close </mat-icon>
+    <mat-form-field appearance="fill" class="drop-menu__input">
+     <mat-label>Логин</mat-label>
+     <input matInput formControlName="login">
+     <mat-error  *ngIf="regForm.controls.login.errors?.['required']">*Пустое поле</mat-error>
+   </mat-form-field>
+
+   <mat-form-field appearance="fill" class="drop-menu__input">
+     <mat-label>Пароль</mat-label>
+     <input matInput formControlName="password" type="password">
+     <mat-error *ngIf="regForm.controls.password.errors?.['required']">*Пустое поле</mat-error>
+     <mat-error *ngIf="regForm.controls.password.errors?.['minlength']">*Пароль должен превышать 8 символов</mat-error>
+   </mat-form-field>
+
+   <mat-form-field appearance="fill" class="drop-menu__input">
+     <mat-label>Подтвердить пароль</mat-label>
+     <input matInput formControlName="confirm" type="password">
+     <mat-error *ngIf="regForm.controls.confirm.errors?.['checkPassword']">
+       *Пароли не совпадают
+     </mat-error>
+     <mat-error *ngIf="regForm.controls.confirm.errors?.['required']">
+       *Пустое поле
+     </mat-error>
+   </mat-form-field>
+   <mat-checkbox class="agreement" #btn  [color]="color">Принимаю условия сайта</mat-checkbox>
+    <div class="ready" style="padding-top:20px;">
+   <a class="btn" href="javascript:void(0)" (click)="sendFormReg($event)" >Регистрация</a>
+   
+  <p  *ngIf="messages" class="{{messages.type}}">{{messages?.message}}</p>
+  </div>
+
+</div>

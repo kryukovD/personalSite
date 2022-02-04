@@ -111,7 +111,8 @@ h2{
     
 }
 .wrap-banner{
-    display: block;
+    display: flex;
+    justify-content: center;
     width: 100%;
     background: #F0EFEB;
 }

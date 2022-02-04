@@ -35,18 +35,18 @@
     <span>Kryukov_Studio</span>
   </div>
   <div class="header__contacts">
-    <div  class="profile" *ngIf="login;else elseBlock">
+    <div  class="profile" *ngIf="auth.userLogin;else elseBlock">
       <div class="profile-icon" (click)="toggleProfile()" (click)="handleClick($event)"> 
     <mat-icon class="ac_circle">account_circle</mat-icon>
-    <a href="javascript:void(0)"  >{{login}}</a>
+    <a href="javascript:void(0)"  >{{auth.userLogin}}</a>
   </div>
     <div class="drop-profile" *ngIf="profile" (click)="handleClick($event)" >
       <span>Профиль</span>
         <ul class="profileList">
           <li routerLink="/profile/orders"> <mat-icon class="profile_icon_list" >shop</mat-icon>Заказы</li>
-          <li><mat-icon class="profile_icon_list">chat</mat-icon>Чат</li>
+          <li routerLink="/profile/chat"><mat-icon class="profile_icon_list">chat</mat-icon>Чат</li>
           <li><mat-icon class="profile_icon_list">help</mat-icon>Поддержка</li>
-          <li  *ngIf="isAdmin"routerLink="/admin"><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</li>
+          <li  *ngIf="auth.isAdmin"routerLink="/admin"><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</li>
         </ul>
         <a class="logout" href="javascript:void(0)" (click)="logout()">Выйти <mat-icon>logout</mat-icon></a>
     </div>
@@ -68,7 +68,7 @@
          <span (click)="loginF()">Вход </span>
       <mat-icon aria-hidden="false" aria-label="Example home icon" class="btnLog">login</mat-icon>
       </div>
-      <span class="reg primary" (click)="openReg($event)">Регистрация</span>
+      <span class="reg primary" (click)="openReg()">Регистрация</span>
       <p *ngIf="messagesLogin" class="error">{{messagesLogin.message}}</p>
     </div>
 
@@ -76,37 +76,5 @@
 
   </div>
 </div>
-<div class="drop-menu" [class.active]="dropMenu" (click)="handleClick($event)" [formGroup]="regForm">
-       <h2>Регистрация</h2>
-       <mat-icon class="close" (click)="closeReg()">close </mat-icon>
-       <mat-form-field appearance="fill" class="drop-menu__input">
-        <mat-label>Логин</mat-label>
-        <input matInput formControlName="login">
-        <div class="tooltip" *ngIf="regForm.controls.login.errors?.['required']">*Пустое поле</div>
-      </mat-form-field>
 
-      <mat-form-field appearance="fill" class="drop-menu__input">
-        <mat-label>Пароль</mat-label>
-        <input matInput formControlName="password" type="password">
-        <div class="tooltip" *ngIf="regForm.controls.password.errors?.['required']">*Пустое поле</div>
-        <div class="tooltip" *ngIf="regForm.controls.password.errors?.['minlength']">*Пароль должен превышать 8 символов</div>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="drop-menu__input">
-        <mat-label>Подтвердить пароль</mat-label>
-        <input matInput formControlName="confirm" type="password">
-        <div class="tooltip" *ngIf="regForm.controls.confirm.errors?.['checkPassword']">
-          *Пароли не совпадают
-        </div>
-        <div class="tooltip" *ngIf="regForm.controls.confirm.errors?.['required']">
-          *Пустое поле
-        </div>
-      </mat-form-field>
-      <mat-checkbox class="agreement" #btn  [color]="color">Принимаю условия сайта</mat-checkbox>
-     
-      <a class="btn" href="javascript:void(0)" (click)="sendFormReg($event)" >Регистрация</a>
-      
-     <p class="error" *ngIf="messages">{{messages.message}}</p>
-
-</div>
 </header>

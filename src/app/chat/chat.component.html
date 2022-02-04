@@ -1,0 +1,28 @@
+<section class="chat">
+    <h3>Чат <mat-icon class="icon-chat" color="primary">chat</mat-icon></h3>
+    <mat-divider></mat-divider>
+    <p class="chat__welcome">Добро пожаловать в чат  <em class="chat__welcome__user">{{auth.userLogin}}</em></p>
+
+    <div class="chat__content">
+        <div class="chat__content__messages">
+            <p>Сообщения</p>
+            <div class="messages__output">
+                <mat-list-item> Здесь отображается чат! </mat-list-item>
+                <ng-container *ngFor="let msg of messages">
+                    <mat-list-item> {{msg}} </mat-list-item>
+                </ng-container>
+            </div>
+            <mat-form-field style="width: 100%;" appearance="standard">
+                <mat-label>Написать сообшение</mat-label>
+                <textarea matInput [formControl]="inputMessage" placeholder="Текст сообщения..."></textarea>
+                <mat-icon (click)=sendMessage() class="icon-send">send</mat-icon>
+              </mat-form-field>
+              
+              
+        </div>
+
+        <div class="chat__content__orders"> 
+            <p>Заказы</p>
+        </div>
+    </div>
+</section>

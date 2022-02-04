@@ -1,0 +1,46 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+@import "../../styles.scss";
+$colorPrimary: mat.get-color-from-palette($mySite-primary, 500);
+.chat{
+    display: flex;
+    flex-direction: column;
+    .icon-chat{
+        vertical-align: middle;
+    }
+    .chat__welcome{
+        text-align: center;
+    }
+    .chat__welcome__user{
+        font-size: 18px;
+        text-decoration: underline $colorPrimary;
+       
+        
+    }
+    .chat__content{
+        display: flex;
+        text-align: center;
+        padding-bottom: 20px;
+        .chat__content__messages{
+            flex-grow: 2;
+        }
+        .chat__content__orders{
+            flex-grow: 1;
+        }
+        .icon-send{
+            position: absolute;
+            top:10px;
+            right:10px;
+            color:$colorPrimary;
+            &:hover{
+                cursor:pointer;
+                color:black;
+            }
+
+        }
+        .messages__output{
+            text-align: left;
+        }
+    }
+
+}

@@ -10,6 +10,7 @@ import { AdminGuard } from './admin.guard';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:"blog",component:BlogComponent},
   {path:"contacts",component:ContactsComponent},
   {path:"blog/:id",component:DetailArticleComponent},
-  {path:"profile/:type",component:ProfileComponent},
+  {path:"profile/:type",component:ProfileComponent,canActivate:[AuthGuard]},
   {path:"admin",component:AdminComponent ,canActivate:[AdminGuard]},
   {path:"admin/post/edit/:id",component:EditPostComponent ,canActivate:[AdminGuard],data:{type:"edit",title:"Изменить"}},
   {path:"admin/post/add",component:EditPostComponent,canActivate:[AdminGuard],data:{type:"add",title:"Добавить"}},

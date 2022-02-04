@@ -8,6 +8,8 @@ import { Config } from '../config';
   providedIn: 'root'
 })
 export class AuthService {
+  userLogin:string|undefined
+  isAdmin:boolean=false
   constructor(private http: HttpClient) { }
   auth(): Observable<any[]> {
     return this.http.get<any[]>(`${Config.url}/auth`, Config.options)

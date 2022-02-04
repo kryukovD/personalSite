@@ -5,6 +5,8 @@ import { RegService } from '../registration.service';
 import { ThemePalette } from '@angular/material/core'
 import { AuthService } from '../auth.service';
 import {MatMenuTrigger} from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog'; 
+import { RegistrationComponent } from '../registration/registration.component';
 
 
 
@@ -22,10 +24,6 @@ import {MatMenuTrigger} from '@angular/material/menu';
 
 export class HeaderComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger?: MatMenuTrigger;
-  @ViewChild("btn",{static:true}) radioBtn:any
-  color: ThemePalette = "primary";
-  login?:string
-  isAdmin:boolean=false
   openLogin :Boolean=false
   dropMenu:Boolean=false
   profile:Boolean=false
@@ -33,25 +31,20 @@ export class HeaderComponent implements OnInit {
     loginIn:new FormControl(null,[Validators.required]),
     passwordIn:new FormControl(null,[Validators.required,Validators.minLength(8)])
   })
-  regForm:FormGroup=new FormGroup({
-    login:new FormControl(null,[Validators.required]),
-    password:new FormControl(null,[Validators.required,Validators.minLength(8)]),
-    confirm:new  FormControl(null,[Validators.required])
-  })
-  messages?:Message
+  
   messagesLogin?:Message
-  constructor(public regService:RegService,public auth:AuthService) { 
+  dialogRef?:any
+  constructor(public regService:RegService,public auth:AuthService,public dialog :MatDialog) { 
   
   }
 
   ngOnInit(): void {
      
     this.auth.auth().subscribe((data:any)=>{
-      this.login=data.login
-      this.isAdmin=data.isAdmin
+      this.auth.userLogin=data.login
+      this.auth.isAdmin=data.isAdmin
     
     })
-    this.regForm.controls.confirm.addValidators(checkPassword(this.regForm))
     document.addEventListener("click",()=>{
       this.openLogin=false
       this.dropMenu=false
@@ -72,46 +65,18 @@ export class HeaderComponent implements OnInit {
     event.stopPropagation()
     this.openLogin=!this.openLogin
   }
-  openReg(event:Event){
-    this.dropMenu=!this.dropMenu
-  }
-  closeReg(){
-    this.dropMenu=false
-  }
+
+  
   handleClick(event:Event){
     event.stopPropagation()
   }
  
-  sendFormReg(event:Event){
-    event.stopPropagation()
-    console.log(this.radioBtn)
-    if(this.regForm.errors===null && this.radioBtn._checked!=false){
-    this.messages=undefined
-    this.regService.sendFormReg({login:this.regForm.controls.login.value,password:this.regForm.controls.password.value}).subscribe((data:any)=>{
-      this.auth.auth().subscribe((data:any)=>{
-        this.login=data.login
-        this.dropMenu=false
-        this.openLogin=false
-      },(error)=>{
-        throw error
-      })
-    })
-    ,(error:any)=>{
-      this.messages={message:"Связь с сервером недоступна",type:"error"}
-    }
-     
-    }
-    else{  
-      this.messages=({message:"*Заполните форму правильно",type:"error"})
-    }
-   
-  }
   toggleProfile(){
     this.profile=!this.profile
   }
   logout(){
     this.auth.logout().subscribe((data)=>{
-      this.login=undefined
+      this.auth.userLogin=undefined
     },
     (error)=>{
       throw error
@@ -125,10 +90,10 @@ export class HeaderComponent implements OnInit {
       this.messagesLogin={message:"*Неверные данные",type:"error"}
       }
       else{
-        this.login=data.login
+        this.auth.userLogin=data.login
         this.openLogin=false
         this.profile=false
-        this.isAdmin=data.isAdmin
+        this.auth.isAdmin=data.isAdmin
         this.messagesLogin=undefined
       }
       
@@ -137,20 +102,13 @@ export class HeaderComponent implements OnInit {
       this.messagesLogin={message:"Связь с сервером прервалась",type:"error"}
     })
   }
+  openReg(){
+    this.dialogRef=this.dialog.open(RegistrationComponent)
+  }
 }
  export interface Message {
     message:string
     type:string
-}
-export function checkPassword(form:FormGroup):ValidatorFn{
-    return (control:AbstractControl):ValidationErrors|null=>{
-      if(form.controls.password.value!==form.controls.confirm.value){
-        return {checkPassword:"Пароли не совпадают"}
-      }
-      else{
-        return null
-      }
-    }
 }
 
 

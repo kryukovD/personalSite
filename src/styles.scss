@@ -20,6 +20,8 @@ $mySite-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
+$black-palette:(500:#560319 ,contrast:(500:white));
+$myPrimary:mat.define-palette($black-palette,500);
 $mySite-theme: mat.define-light-theme((
   color: (
     primary: $mySite-primary,
@@ -27,6 +29,7 @@ $mySite-theme: mat.define-light-theme((
     warn: $mySite-warn,
   )
 ));
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -75,6 +78,7 @@ h2{
 }
 .content{
   flex:1 0 auto;
+  padding-top:70px;
 }
 .wrap{
   flex-wrap:wrap;
@@ -123,12 +127,40 @@ h3{
   color: green;
   font-size: 13px;
 }
+::-webkit-scrollbar {
+  background: white;
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background:#560319 ;;
+  
+}
+
+
 @media (max-width:700px) {
 .wrapper{
   width: 95% !important;
 }
 }
 
+.btn{
+  display: inline-flex;
+  text-decoration: none;
+  height: 45px;
+  background: #560319 ;
+  color: white;
+  border-radius: 5px;
+  min-width: 120px;
+  padding: 0px 15px;
+  box-shadow: unset 5px 5px  white;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 17px;
+  font-family:Roboto, "Helvetica Neue", sans-serif   !important;
+  font-weight: normal;
+
+}
 
            
 
