@@ -1,19 +1,48 @@
 <section class="chat">
     <h3>Чат <mat-icon class="icon-chat" color="primary">chat</mat-icon></h3>
     <mat-divider></mat-divider>
-    <p class="chat__welcome">Добро пожаловать в чат  <em class="chat__welcome__user">{{auth.userLogin}}</em></p>
+    <h4 class="chat__welcome">Добро пожаловать в чат  <em class="chat__welcome__user">{{auth.userLogin}}</em></h4>
+     <div class="instruction">  
+       <div class="instruction__step"> <span>Выбери заказ </span></div>
+       <div class="instruction__step"> <span>Отправь сообщения</span></div>
+       <div class="instruction__step"> <span> Жди ответа </span></div>
+       <div class="line"></div>
+     </div>
+      <ng-container *ngIf="auth.isAdmin">
+        <div class="adminChat">
+        <mat-form-field style="width:30%" *ngIf="chatService.rooms" appearance="standard" color="primary"  >
+            <mat-label>Активные комнаты</mat-label>
+            <mat-select name="food" #listOrderAdmin (selectionChange)="changeSelectOrder($event,listOrderAdmin.value)">
+              <mat-option *ngFor="let room of chatService.rooms" [value]="room">
+                {{room}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
+          <mat-form-field style="width:30%" *ngIf="chatService.rooms" appearance="standard" color="primary"  >
+            <mat-label>Все заказы</mat-label>
+            <mat-select name="food" #AllListOrderAdmin (selectionChange)="changeSelectOrder($event,AllListOrderAdmin.value)">
+              <mat-option *ngFor="let order of ordersByAdmin" [value]="order.id">
+                {{order.id}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </ng-container>
     <div class="chat__content">
         <div class="chat__content__messages">
-            <p>Сообщения</p>
             <div class="messages__output">
-                <mat-list-item> Здесь отображается чат! </mat-list-item>
-                <ng-container *ngFor="let msg of messages">
-                    <mat-list-item> {{msg}} </mat-list-item>
+                <p> <mat-icon color="primary" class="icon">message</mat-icon> Здесь отображается чат! </p>
+                <div class="message__items" *ngIf="chatService.messages.length>0">
+                <ng-container *ngFor="let msg of chatService.messages">
+                    <div class="messages__messageUser"> 
+                      <span>{{msg.message.isAdmin?'admin':msg.message.userLogin}}</span>  <p>{{msg.message.message}}</p> <span>{{msg.message.date|date:'short'}}</span>
+                    </div>
                 </ng-container>
             </div>
+            </div>
             <mat-form-field style="width: 100%;" appearance="standard">
-                <mat-label>Написать сообшение</mat-label>
+                <mat-label>Написать сообшение <mat-icon>order</mat-icon></mat-label>
                 <textarea matInput [formControl]="inputMessage" placeholder="Текст сообщения..."></textarea>
                 <mat-icon (click)=sendMessage() class="icon-send">send</mat-icon>
               </mat-form-field>
@@ -22,7 +51,18 @@
         </div>
 
         <div class="chat__content__orders"> 
-            <p>Заказы</p>
+            <div class="orders__output" >
+            <p class="success__order"> <mat-icon class="icon" color="primary">shop</mat-icon>Доступные заказы</p>
+
+            <mat-form-field appearance="standard" color="primary"    >
+              <mat-label>Выберите заказ</mat-label>
+              <mat-select #listOrder matNativeControl name="food" (selectionChange)="changeSelectOrder($event,listOrder.value)"  >
+                <mat-option *ngFor="let order of orders" [value]="order.id">
+                  {{order.id}} {{order.category}} на фамилию {{order.family}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </div>
         </div>
     </div>
 </section>

@@ -1,0 +1,110 @@
+<section class="support-section">
+
+    <div class="support-header">
+    <h3>Поддержка <mat-icon color="primary">help</mat-icon></h3>
+    <mat-divider></mat-divider>
+    </div>
+    
+    <div class="content-support">
+        <div class="content-nav">
+            <h4 id="1" (click)="addManual($event)">Как зарегистрироваться?</h4>
+            <h4 id="2" (click)="addManual($event)">Как оставить заявку?</h4>
+            <h4 id="3" (click)="addManual($event)">Как узнать статус заявки?</h4>
+            <h4 id="4" (click)="addManual($event)">Как активировать заказ?</h4>
+            <h4 id="5" (click)="addManual($event)">Как обсудить заказ?</h4>
+            <h4 id="6" (click)="addManual($event)">Где посмотреть ваши работы?</h4>
+            <h4 id="7" (click)="addManual($event)">Как узнать контактные данные ?</h4>
+
+        </div>
+
+        <div class="content-body">
+            <ng-container [ngSwitch]="id">
+                     <div class="answer"*ngSwitchCase="1">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Перейди на главную страницу  <a href="/">kryukov-studio.ru</a> </mat-list-item>
+                            <mat-list-item role="listitem">Нажмите на кнопку "Войти" -> В спылающем окне найдите кнопку "Регистрация"</mat-list-item>
+                            <mat-list-item role="listitem">Заполните поля формы , если что-то будет введено неверно поля будут подсвечены красным </mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="2">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Перейди на главную страницу  <a href="/">kryukov-studio.ru</a> </mat-list-item>
+                            <mat-list-item role="listitem">На главной страницу вы найдите кнопку "Оставить заявку"</mat-list-item>
+                            <mat-list-item role="listitem">Заполните поля формы , если что-то будет введено неверно поля будут подсвечены красным </mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="3">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Авторизируйтесь на сайте </mat-list-item>
+                            <mat-list-item role="listitem">Нажмите на значок профиля в шапке сайта</mat-list-item>
+                            <mat-list-item role="listitem">Перейдите в раздел заказы </mat-list-item>
+                            <mat-list-item role="listitem">Активируйте заказ </mat-list-item>
+                            <mat-list-item role="listitem">Внизу под полем активации вы увидите ваш заказ и его статус </mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="4">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Когда ваша заявка будет взята на выполнение вам вышлют на почту ключ активации </mat-list-item>
+                            <mat-list-item role="listitem">Этот ключ необходимо ввести в разделе вашего профиля на вкладке "Заказы"</mat-list-item>
+                            <mat-list-item role="listitem">Внизу под полем активации вы увидите ваш заказ и его статус </mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="5">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Уточнить детали заказа можно в разделе "чат" вашего профиля </mat-list-item>
+                            <mat-list-item role="listitem">Выберите заказ в меню справа и напишите сообщения</mat-list-item>
+                            <mat-list-item role="listitem">Чат работает в реальном времени , скорее всег вам сразу ответят </mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="6">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Работы можно посмотреть в разделе <a href="/portfolio">Портфолио </a> </mat-list-item>
+                            <mat-list-item role="listitem">Также в этом разделе можно ознакомится с исполнителями</mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <div class="answer"*ngSwitchCase="7">
+                        <mat-list role="list" class="listSupport">
+                            <mat-list-item role="listitem" >Контактные данные можно посмотреть в разделе <a href="/contacts">Контакты </a> </mat-list-item>
+                            <mat-list-item role="listitem">Также контакты доступные в самом низу сайта</mat-list-item>
+                          </mat-list>
+                          <a href="javascipt:void(0)" class="back-support" (click)="back()">Назад</a>
+                     </div>
+
+                     <ng-container *ngSwitchDefault>
+
+                        <div class="defaultSupport">
+                            <div class="descriptionSupport">
+                            <p>Здесь отображаются самые частые вопросы , которые помогут вам в использовании сайта.
+                            </p>
+                            <p> Выберите раздел и появится соответствующая информация. </p>
+                            <p> Также если вы заметили некорректную работу сайта просьба писать на почту <b>dimjson5430@gmail.com </b></p>
+                            </div>
+                            <img  class="support-img"  [defaultImage]="'assets/thumbnail.png'"  [lazyLoad]="'assets/support.png'" >
+                           
+                        </div>
+
+                    
+                    </ng-container>
+                </ng-container>
+                
+
+        </div>
+
+  
+    </div>
+
+   
+
+</section>

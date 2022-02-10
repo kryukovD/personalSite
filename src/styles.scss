@@ -132,7 +132,7 @@ h3{
   width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background:#560319 ;;
+  background:#560319 ;
   
 }
 
@@ -161,6 +161,18 @@ h3{
   font-weight: normal;
 
 }
+
+.listSupport{
+  .mat-list-item-content:before{
+    content: "description";
+    font-size: 25px;
+    display: block;
+    font-family: 'Material Icons';
+    color:#3700b3;
+  }
+    
+}
+
 
            
 

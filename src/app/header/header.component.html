@@ -43,12 +43,14 @@
     <div class="drop-profile" *ngIf="profile" (click)="handleClick($event)" >
       <span>Профиль</span>
         <ul class="profileList">
-          <li routerLink="/profile/orders"> <mat-icon class="profile_icon_list" >shop</mat-icon>Заказы</li>
-          <li routerLink="/profile/chat"><mat-icon class="profile_icon_list">chat</mat-icon>Чат</li>
-          <li><mat-icon class="profile_icon_list">help</mat-icon>Поддержка</li>
-          <li  *ngIf="auth.isAdmin"routerLink="/admin"><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</li>
+          <li routerLink="/profile/orders" > <a ><mat-icon class="profile_icon_list" >shop</mat-icon>Заказы </a></li>
+          <li routerLink="/profile/chat">  <a ><mat-icon class="profile_icon_list">chat</mat-icon>Чат </a></li>
+          <li  routerLink="/profile/support"><a href="javascript:void(0)"><mat-icon class="profile_icon_list">help</mat-icon>Поддержка </a></li>
+          <li  routerLink="/admin"  *ngIf="auth.isAdmin"><a ><mat-icon class="profile_icon_list">admin_panel_settings</mat-icon>Админка</a></li>
         </ul>
-        <a class="logout" href="javascript:void(0)" (click)="logout()">Выйти <mat-icon>logout</mat-icon></a>
+        <div class="wrap-logout">
+        <a class="logout " href="javascript:void(0)" (click)="logout()">Выйти </a>
+      </div>
     </div>
     </div>
     <ng-template #elseBlock>

@@ -21,6 +21,7 @@ $colorPrimary: mat.get-color-from-palette($mySite-primary, 500);
         display: flex;
         text-align: center;
         padding-bottom: 20px;
+        align-items: flex-end;
         .chat__content__messages{
             flex-grow: 2;
         }
@@ -39,8 +40,113 @@ $colorPrimary: mat.get-color-from-palette($mySite-primary, 500);
 
         }
         .messages__output{
-            text-align: left;
+            text-align: center;
+        }
+        .message__items{
+            max-height: 300px;
+            overflow: scroll;
+        }
+        .messages__messageUser{
+            display: flex;
+            justify-content:flex-start;
+            align-items: center;
+            background: #F0EFEB;
+            margin-bottom: 5px;
+            padding: 10px 0px;
+            margin-right: 10px;
+            p{
+                flex-grow: 2;
+                text-align: left;
+            }
+            span{
+              
+            }
+            span:nth-child(1){
+                text-align: center;
+                flex-basis: 130px;
+
+            }
+            span:nth-child(3){
+                text-align: right;
+                padding-right: 10px;
+            }
+
         }
     }
 
 }
+.icon{
+    vertical-align: middle;
+}
+.chat__tooltip{
+  text-align: center;
+}
+.orders__output{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    flex-grow: 1;
+    .mat-icon{
+        align-self: center;
+    }
+   .order-item{
+       display: inline-block;
+       border-bottom:1px solid $colorPrimary;
+       margin-left: 10px;
+       padding: 10px;
+       &:hover{
+           cursor: pointer;
+       }
+   }
+   .success__order{
+       text-align: center;
+       width: 200px;
+   }
+}
+
+::-webkit-scrollbar {
+    background: white;
+    width: 5px;
+    margin-top: 10px;
+  }
+  .active{
+    background: $colorPrimary;
+    color: white;
+  }
+  .instruction{
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0px;
+      position: relative;
+      .instruction__step{
+        display: flex;
+        height: 150px;
+        position: relative;
+        flex-basis: 150px;
+        border: 1px solid $colorPrimary;
+        border-radius: 50%;
+        background: $colorPrimary;
+        color: white;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        span{
+            text-align: center;
+        }
+      }
+      .line{
+          display: block;
+          position: absolute;
+          height: 2px;
+          background-color:rgba(0, 0, 0, 0.12);
+          top:50%;
+          left:0px;
+          width: 100%;
+      }
+      
+  }
+  .adminChat{
+    display: flex;
+    justify-content: space-between;
+}
+  

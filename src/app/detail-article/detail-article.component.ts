@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-detail-article',
@@ -9,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailArticleComponent implements OnInit {
 
-  constructor(public posts:PostsService,public route:ActivatedRoute) { }
+  constructor(public posts:PostsService,public route:ActivatedRoute,private location:Location) { }
   article?:any
 
   ngOnInit(): void {
@@ -17,6 +19,9 @@ export class DetailArticleComponent implements OnInit {
     this.posts.getFullArticle(id).subscribe((result:any)=>{
       this.article=result
     })
+  }
+  back(){
+    this.location.back()
   }
 
 

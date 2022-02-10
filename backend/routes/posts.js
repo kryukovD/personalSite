@@ -3,6 +3,7 @@ const router=express.Router();
 const pool=require("../config")
 const fs=require("fs")
 const path=require("path")
+htmlspecialchars = require('htmlspecialchars');
 router.get("/",function(req,res,next){
     pool.getConnection((err,connection)=>{
         if (err){
@@ -37,7 +38,6 @@ router.get("/:id",function(req,res,next){
                 throw err
             }
             else{
-               
                 res.send(results[0])
             }
         })

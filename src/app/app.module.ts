@@ -45,6 +45,14 @@ import { CabOrdersComponent } from './cab-orders/cab-orders.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ChatComponent } from './chat/chat.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+import { LOCALE_ID } from '@angular/core';
+import { SupportComponent } from './support/support.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {SafeHtmlPipe } from "./save-html.pipe"
+
+registerLocaleData(localeRu, 'ru');
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
@@ -68,7 +76,10 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ProfileComponent,
     CabOrdersComponent,
     RegistrationComponent,
-    ChatComponent
+    ChatComponent,
+    SupportComponent,
+    SafeHtmlPipe,
+   
     
 
   
@@ -98,13 +109,14 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     CarouselModule,
     MatDividerModule,
     MatTableModule,
+    MatSidenavModule,
     SocketIoModule.forRoot(config)
     
     
     
     
   ],
-  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}],
+  providers: [{ provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro},{provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

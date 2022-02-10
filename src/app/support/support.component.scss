@@ -1,0 +1,46 @@
+.support-section{
+    display: flex;
+    padding-bottom: 30px;
+    flex-direction: column;
+    .content-support{
+        display: flex;
+        justify-content: flex-start;
+    }
+    .content-body{
+        padding:0px 20px;
+        a{
+            padding: 10px 10px;
+        }
+    }
+   .content-nav{
+       h4:hover{
+        cursor: pointer;
+        color:#3700b3;
+       }
+   }
+    
+    .content-nav{
+        
+    }
+    .defaultSupport{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        p{
+            padding-top: 5px;
+            line-height: 20px;
+        }
+        .support-img{
+            padding-top: 10px;
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+.back-support{
+    text-decoration: none;
+    padding: 5px;
+    float: right;
+    color:#3700b3;
+    
+}

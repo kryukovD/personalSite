@@ -27,7 +27,7 @@ export class FormService {
   getOrderByKey(id:number,key:string){
     return this.http.post(`${Config.url}/orders/key`,{id,key},httpOption)
   }
-  getActiveOrders(id:number):any{
+  getActiveOrders(id:number|undefined):any{
     return this.http.get(`${Config.url}/orders/active/${id}`,httpOption)
   }
 }

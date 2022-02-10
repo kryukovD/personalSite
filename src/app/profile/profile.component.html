@@ -8,6 +8,10 @@
         <app-chat></app-chat>
        </ng-template>
 
+       <ng-template [ngIf]="type=='support'">
+        <app-support></app-support>
+       </ng-template>
+ 
 
     </div>
 </section>

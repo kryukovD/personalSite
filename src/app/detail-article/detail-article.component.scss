@@ -6,14 +6,13 @@
     
     .full-post{
         display: flex;
-        flex-wrap: wrap;
         width: 100%;
         height: 80%;   
         img{
             width: 35%;
-            height: 300px;
-            object-fit: cover;
-            height: auto;
+            align-self: flex-start;
+            object-fit: contain;
+            
         }
         p{
             padding: 0px 15px;
@@ -35,5 +34,10 @@
      display:flex;
      justify-content: end;
     }
+    .putContent{
+        padding:0px 20px ;
+        flex-grow: 1;
+    }
+    
 
     

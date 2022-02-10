@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
 import {MatMenuTrigger} from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog'; 
 import { RegistrationComponent } from '../registration/registration.component';
+import { Router } from '@angular/router';
 
 
 
@@ -34,7 +35,7 @@ export class HeaderComponent implements OnInit {
   
   messagesLogin?:Message
   dialogRef?:any
-  constructor(public regService:RegService,public auth:AuthService,public dialog :MatDialog) { 
+  constructor(public regService:RegService,public auth:AuthService,public dialog :MatDialog,private route:Router) { 
   
   }
 
@@ -43,6 +44,7 @@ export class HeaderComponent implements OnInit {
     this.auth.auth().subscribe((data:any)=>{
       this.auth.userLogin=data.login
       this.auth.isAdmin=data.isAdmin
+      this.auth.id=data.id
     
     })
     document.addEventListener("click",()=>{
@@ -77,6 +79,8 @@ export class HeaderComponent implements OnInit {
   logout(){
     this.auth.logout().subscribe((data)=>{
       this.auth.userLogin=undefined
+      this.route.navigate(["/"])
+      
     },
     (error)=>{
       throw error
@@ -94,6 +98,7 @@ export class HeaderComponent implements OnInit {
         this.openLogin=false
         this.profile=false
         this.auth.isAdmin=data.isAdmin
+        this.auth.id=data.idusers
         this.messagesLogin=undefined
       }
       
